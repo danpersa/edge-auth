@@ -10,6 +10,7 @@ gem 'bson_ext'
 gem 'mongo_ext'
 gem 'simple_form'
 gem 'edge-state-machine'
+gem 'omniauth-twitter'
 
 
 # jquery-rails is used by the dummy application

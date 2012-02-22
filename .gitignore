@@ -1,10 +1,10 @@
 .bundle/
 log/*.log
 pkg/
-rspec/dummy/db/*.sqlite3
-rspec/dummy/log/*.log
-rspec/dummy/tmp/
-rspec/dummy/.sass-cache
+spec/dummy/db/*.sqlite3
+spec/dummy/log/*.log
+spec/dummy/tmp/
+spec/dummy/.sass-cache
 .project
 doc/api
 doc/app
