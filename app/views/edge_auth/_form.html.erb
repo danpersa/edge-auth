@@ -1,0 +1,16 @@
+<%= simple_form_for @auth_form_model, @auth_form_options do |f| %>
+  <% if @auth_form_model.respond_to? :username %>
+    <%= f.input :username, :autofocus => :true, :placeholder => 'Username' %>
+  <% end %>
+  <%= f.input :email, :placeholder => "email@domain.com" %>
+  <%= f.input :password, :label => 'Password', :required => true %>
+  <%= f.input :password_confirmation, :required => true %>
+  <% if EdgeCaptcha::Engine.config.recaptcha[:enable] %>
+      <%= render 'edge_captcha/recaptcha' %>
+    <% unless @auth_form_model.errors[:recaptcha].empty? %>
+      <small class="error recaptcha"><%= display_all_error_messages @auth_form_model, :recaptcha %></small>
+    <% end %>
+  <% end %>
+  <hr />
+  <%= f.submit "Create new account", :class => "nice large radius blue button" %>
+<% end %>
