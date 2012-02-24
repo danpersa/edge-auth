@@ -7,11 +7,11 @@ require "edge-auth/version"
 Gem::Specification.new do |s|
   s.name        = "edge-auth"
   s.version     = EdgeAuth::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of EdgeAuth."
-  s.description = "TODO: Description of EdgeAuth."
+  s.authors     = ["Dan Persa"]
+  s.email       = ["dan.persa@gmail.com"]
+  s.homepage    = "https://github.com/danpersa/edge-auth"
+  s.summary     = "EdgeAuth is an authentication solution"
+  s.description = "EdgeAuth is an authentication solution"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
