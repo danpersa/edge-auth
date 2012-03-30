@@ -22,10 +22,10 @@ module EdgeAuth
 	  attr_accessor   :password, :updating_password
 	  attr_accessible :email, :password, :password_confirmation, :activation_code
 
-	  validates_presence_of       :email, on: :create
+	  validates_presence_of       :email
 	  validates_length_of         :email, maximum: 255
 	  validates_uniqueness_of     :email, case_sensitive: false
-	  validates_format_of         :email, with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, on: :create
+	  validates_format_of         :email, with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	  validates_presence_of       :password, :if => :should_validate_password?
 	  validates_confirmation_of   :password, :if => :should_validate_password?
