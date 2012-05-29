@@ -1,3 +1,6 @@
 = EdgeAuth
 
 This project rocks and uses MIT-LICENSE.
+
+gem build gemspec.gemspec
+gem push gem-version.gem
