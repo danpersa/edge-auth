@@ -16,9 +16,6 @@ module EdgeAuth
 	  field :password_reset_code         , :type => String
 	  field :reset_password_mail_sent_at , :type => DateTime
 
-
-	  index :email, unique: true
-
 	  attr_accessor   :password, :updating_password
 	  attr_accessible :email, :password, :password_confirmation, :activation_code
 
@@ -54,14 +51,14 @@ module EdgeAuth
 	  end
 
 	  def self.authenticate(email, submitted_password)
-	    user = Identity.first(conditions: {email: email})
+	    user = Identity.where(email: email).first
 	    return nil  if user.nil? or user.state == "blocked"
 	    return user if user.has_password?(submitted_password)
 	  end
 
 	  def self.authenticate_with_salt(id, cookie_salt)
 	    return nil if id.nil?
-	    user = Identity.first(conditions: {_id: id})
+	    user = Identity.where(_id: id).first
 	    (user && user.salt == cookie_salt) ? user : nil
 	  end
 
@@ -103,7 +100,7 @@ module EdgeAuth
 	    begin
 	      salt = secure_hash("#{Time.now.utc}--#{password}--#{SecureRandom.urlsafe_base64}")
 	      user = Identity.where(salt: salt)
-	    end while Identity.exists?(conditions: { salt: salt })
+	    end while Identity.where({ salt: salt }).exists?
 	    return salt
 	  end
 

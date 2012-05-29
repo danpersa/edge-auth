@@ -11,7 +11,7 @@ describe EdgeAuth::Identity do
 
   describe 'creation' do
     let(:identity) do
-      Factory.build(:identity)
+      FactoryGirl.build(:identity)
     end
 
     it 'should create a new instance given valid attributes' do
@@ -25,15 +25,15 @@ describe EdgeAuth::Identity do
       it 'should reject invalid email addresses' do
         addresses = %w[identity@foo,com identity_at_foo.org example.identity@foo.]
         addresses.each do |address|
-          invalid_email_identity = Factory.build(:identity, :email => address)
+          invalid_email_identity = FactoryGirl.build(:identity, :email => address)
           invalid_email_identity.should_not be_valid
         end
       end
 
       it 'should reject email addresses identical up to case' do
-        identity = Factory(:identity)
+        identity = FactoryGirl.create(:identity)
         upcased_email = identity.email.upcase
-        identity_with_duplicate_email = Factory.build(:identity, :email => upcased_email)
+        identity_with_duplicate_email = FactoryGirl.build(:identity, :email => upcased_email)
         identity_with_duplicate_email.should_not be_valid
       end
 
@@ -41,7 +41,7 @@ describe EdgeAuth::Identity do
 
         context 'too long' do
           let(:identity) do
-            Factory.build(:identity, email: 'a' * 256 + '@yahoo.com')
+            FactoryGirl.build(:identity, email: 'a' * 256 + '@yahoo.com')
           end
 
           before do
@@ -56,7 +56,7 @@ describe EdgeAuth::Identity do
 
       context 'when validating email presence' do
         let(:identity) do
-          Factory.build(:identity, email: nil)
+          FactoryGirl.build(:identity, email: nil)
         end
 
         before do
@@ -70,11 +70,11 @@ describe EdgeAuth::Identity do
 
       context 'when validating email uniqueness' do
         let(:identity) do
-          Factory.build(:identity, :email => 'same@example.com')
+          FactoryGirl.build(:identity, :email => 'same@example.com')
         end
 
         before do
-          Factory(:identity, :email => 'same@example.com')
+          FactoryGirl.create(:identity, :email => 'same@example.com')
           identity.valid?
         end
 
@@ -88,7 +88,7 @@ describe EdgeAuth::Identity do
 
       context 'when validating inclusion' do
         let(:identity) do
-          Factory.build(:identity, state: 'other')
+          FactoryGirl.build(:identity, state: 'other')
         end
 
         before do
@@ -131,7 +131,7 @@ describe EdgeAuth::Identity do
 
       describe 'block identity' do
         let(:identity) do
-          Factory.build(:identity)
+          FactoryGirl.build(:identity)
         end
 
         it 'should be in the blocked state' do
@@ -144,7 +144,7 @@ describe EdgeAuth::Identity do
     describe 'password field' do
       context 'when validating password confirmation' do
         let(:identity) do
-          Factory.build(:identity, password_confirmation: 'invalid')
+          FactoryGirl.build(:identity, password_confirmation: 'invalid')
         end
 
         before do
@@ -165,7 +165,7 @@ describe EdgeAuth::Identity do
       describe 'password encryption' do
 
         let(:identity) do
-          Factory.create(:identity)
+          FactoryGirl.create(:identity)
         end
 
         it 'should have an encrypted password attribute' do
@@ -195,7 +195,7 @@ describe EdgeAuth::Identity do
           end
 
           it 'should return nil if identity is blocked' do
-            blocked_identity = Factory(:identity, :email => 'blocked@yahoo.com')
+            blocked_identity = FactoryGirl.create(:identity, :email => 'blocked@yahoo.com')
             blocked_identity.block!
             blocked_identity = EdgeAuth::Identity.authenticate(blocked_identity.email, blocked_identity.password)
             blocked_identity.should be_nil

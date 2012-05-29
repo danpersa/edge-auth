@@ -5,7 +5,7 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'mongoid', '2.4.0'
+gem 'mongoid', '3.0.0.rc'
 gem 'bson_ext'
 gem 'mongo_ext'
 gem 'simple_form'
