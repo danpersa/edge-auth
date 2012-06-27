@@ -6,8 +6,6 @@ source "http://rubygems.org"
 gemspec
 
 gem 'mongoid', '3.0.0.rc'
-gem 'bson_ext'
-gem 'mongo_ext'
 gem 'simple_form'
 gem 'edge-state-machine'
 gem 'omniauth-twitter'
