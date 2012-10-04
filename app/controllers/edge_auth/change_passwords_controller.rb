@@ -4,7 +4,6 @@ module EdgeAuth
     before_filter :authenticate
     
     def new
-      puts "XXXXXXXXXXXXXXXXX"
       @change_password = ChangePassword.new
       @title = 'Change Password'
       render :layout => 'settings_sections'
