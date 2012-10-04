@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EdgeAuth::ChangePassword do
   before(:each) do
-    @user = FactoryGirl.create(:identity)
+    @user = FactoryGirl.create(:user)
     @attr = {
       :password => 'password',
       :password_confirmation => 'password',

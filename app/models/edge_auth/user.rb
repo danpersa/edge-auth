@@ -1,7 +1,7 @@
 require 'mongoid/edge-state-machine'
 
 module EdgeAuth
-  class Identity
+  class User
     include Mongoid::Document
     include Mongoid::Timestamps
     include Mongoid::EdgeStateMachine
@@ -51,14 +51,14 @@ module EdgeAuth
     end
 
     def self.authenticate(email, submitted_password)
-      user = Identity.where(email: email).first
+      user = User.where(email: email).first
       return nil  if user.nil? or user.state == "blocked"
       return user if user.has_password?(submitted_password)
     end
 
     def self.authenticate_with_salt(id, cookie_salt)
       return nil if id.nil?
-      user = Identity.where(_id: id).first
+      user = User.where(_id: id).first
       (user && user.salt == cookie_salt) ? user : nil
     end
 
@@ -106,8 +106,8 @@ module EdgeAuth
     def make_salt
       begin
         salt = secure_hash("#{Time.now.utc}--#{password}--#{SecureRandom.urlsafe_base64}")
-        user = Identity.where(salt: salt)
-      end while Identity.where({ salt: salt }).exists?
+        user = User.where(salt: salt)
+      end while User.where({ salt: salt }).exists?
       return salt
     end
 

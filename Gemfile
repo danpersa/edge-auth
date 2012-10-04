@@ -5,7 +5,7 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'mongoid', '3.0.0.rc'
+gem 'mongoid'
 gem 'simple_form'
 gem 'edge-state-machine'
 gem 'omniauth-twitter'

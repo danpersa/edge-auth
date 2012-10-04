@@ -30,7 +30,7 @@ module EdgeAuth
 
     def old_password_match
        return if self.user_id.nil?
-      user = Identity.find(self.user_id)
+      user = User.find(self.user_id)
       errors.add(:old_password, "Old password must be filled in with your current password") if
         !user.nil? and !self.old_password.empty? and !user.has_password?(self.old_password)
     end

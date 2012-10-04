@@ -38,7 +38,7 @@ describe EdgeAuth::ResetPassword do
   end
 
   it 'should be valid' do
-    FactoryGirl.create(:identity, :email => @attr[:email])
+    FactoryGirl.create(:user, :email => @attr[:email])
     valid_reset = EdgeAuth::ResetPassword.new(@attr)
     valid_reset.should be_valid
   end

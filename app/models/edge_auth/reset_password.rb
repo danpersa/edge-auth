@@ -19,7 +19,7 @@ module EdgeAuth
 
     def email_must_belong_to_an_user
       errors.add(:email, "cannot be found in the database") if
-        (not self.email.blank?) and EdgeAuth::Identity.find_by_email(self.email) == nil
+        (not self.email.blank?) and EdgeAuth::User.find_by_email(self.email) == nil
     end
 
     def persisted?
