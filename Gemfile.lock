@@ -16,6 +16,12 @@ PATH
     edge-auth (0.0.4)
       rails (~> 3.2.1)
 
+PATH
+  remote: /home/dix/prog/rails/edge-layouts
+  specs:
+    edge-layouts (0.0.3)
+      rails (~> 3.2.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -209,6 +215,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   edge-auth!
   edge-captcha
+  edge-layouts!
   edge-state-machine
   execjs
   factory_girl_rails

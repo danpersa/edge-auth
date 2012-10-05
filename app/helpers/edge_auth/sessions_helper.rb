@@ -65,7 +65,7 @@ module EdgeAuth
     end
     
     def redirect_to_root_path_with_notice(notice)
-      redirect_to root_path, :notice => notice
+      redirect_to main_app.root_path, :notice => notice
     end
     
     def store_current_page
