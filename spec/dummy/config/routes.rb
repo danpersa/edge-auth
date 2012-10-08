@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   mount EdgeAuth::Engine => "/edge-auth"
 
-  root                                  :to => 'users#new'
+  root                                  :to => 'application#index'
 
   match '/signup',                      :to => 'users#new'
   match '/activate',                    :to => 'users#activate'

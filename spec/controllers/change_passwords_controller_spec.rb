@@ -14,7 +14,7 @@ describe ChangePasswordsController do
       it_should_behave_like 'successful get request' do
         let(:action) do
           test_web_sign_in(@user)
-          visit main_app.new_change_password_path
+          visit new_change_password_path
           @title = @base_title + ' | Change Password'
         end
       end

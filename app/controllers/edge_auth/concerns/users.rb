@@ -4,14 +4,13 @@ module EdgeAuth
       extend ActiveSupport::Concern
 
       included do
-        layout 'section_with_default_sidebar'
-
         before_filter :authenticate, :except => [:new, :create, :activate, :reset_password, :change_reseted_password]
         before_filter :activate_user, :except => [:show, :new, :create, :activate, :reset_password, :change_reseted_password]
-        before_filter :existing_user, :only => [:show, :edit, :update, :destroy, :following, :followers, :ideas, :follow, :unfollow]
-        before_filter :correct_user, :only => [:edit, :update, :ideas]
-        before_filter :admin_or_correct_user, :only => :destroy
+        before_filter :existing_user, :only => [:show, :edit, :update, :destroy]
+        before_filter :correct_user, :only => [:edit, :update, :destroy]
         before_filter :not_authenticate, :only => [:change_reseted_password, :create, :new]
+
+        respond_to :html, :js
 
         private 
 
@@ -22,10 +21,6 @@ module EdgeAuth
 
           def correct_user
             redirect_to(root_path) unless current_user?(@user)
-          end
-          
-          def admin_or_correct_user
-            redirect_to(root_path) unless current_user.admin? or current_user?(@user)  
           end
       end
      
@@ -39,7 +34,6 @@ module EdgeAuth
       def create
         @auth_form_options = {:builder => SupersizeFormBuilder}
         @auth_form_model = User.new(params[:user])
-
         unless verify_recaptcha(request.remote_ip, params)
           @title = 'Sign up'
           # we trigger the validation manually
@@ -55,6 +49,18 @@ module EdgeAuth
         else
           @title = "Sign up"
           render :template => 'users/new', :layout => 'one_section_narrow'
+        end
+      end
+
+      def update
+        # the user is searched in the existing_user before interceptor
+        if @user.update_attributes(params[:user])
+          flash[:success] = "Profile updated."
+          redirect_to @user
+        else
+          @title = "Edit user"
+          #init_default_sidebar
+          render :edit
         end
       end
 

@@ -1,11 +1,6 @@
-require 'rails'
 require "edge-auth/engine"
 
 module EdgeAuth
-
-  module Controllers
-    autoload :Controllers, 'edge-auth/controllers/sessions_concern'
-  end
 
   #try and verify the captcha response. Then give out a message to flash
   def self.verify_recaptcha(remote_ip, params)
