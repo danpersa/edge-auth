@@ -1,6 +1,6 @@
 module EdgeAuth
   module Concerns
-    module Sessions
+    module SessionsController
       extend ActiveSupport::Concern
      
       # 'included do' causes the included code to be evaluated in the

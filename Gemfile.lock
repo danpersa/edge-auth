@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/danpersa/edge-layouts.git
+  revision: 0951ca06c6538b43048890acad1b12a63ef3d8dd
+  specs:
+    edge-layouts (0.0.3)
+      rails (~> 3.2.1)
+
+GIT
   remote: https://github.com/jnicklas/capybara.git
   revision: e73628d558e4789e5916f9c0350bed79cc0c0d39
   specs:
@@ -14,12 +21,6 @@ PATH
   remote: .
   specs:
     edge-auth (0.0.4)
-      rails (~> 3.2.1)
-
-PATH
-  remote: /home/dix/prog/rails/edge-layouts
-  specs:
-    edge-layouts (0.0.3)
       rails (~> 3.2.1)
 
 GEM

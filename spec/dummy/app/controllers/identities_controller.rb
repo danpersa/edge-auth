@@ -1,13 +1,13 @@
 class IdentitiesController < ApplicationController
 
   def new
-    @auth_form_model = EdgeAuth::User.new
+    @auth_form_model = User.new
     @auth_form_options = {}
   end
 
   def create
   	@auth_form_options = {}
-  	@auth_form_model = EdgeAuth::User.new(params[:user])
+  	@auth_form_model = User.new(params[:user])
 
   	unless EdgeAuth::verify_recaptcha(request.remote_ip, params)
       @title = 'Sign up'

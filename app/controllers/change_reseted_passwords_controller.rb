@@ -1,3 +1,3 @@
 class ChangeResetedPasswordsController < EdgeAuth::ApplicationController
-  include EdgeAuth::Concerns::ChangeResetedPasswords
+  include EdgeAuth::Concerns::ChangeResetedPasswordsController
 end

@@ -63,7 +63,7 @@ describe UsersController do
     describe 'success' do
 
       before(:each) do
-        @attr = { :username => 'New EdgeAuth::User', :email => 'user@example.com',
+        @attr = { :username => 'New User', :email => 'user@example.com',
                   :password => 'foobar', :password_confirmation => 'foobar' }
       end
 

@@ -1,4 +1,4 @@
 class UsersController < EdgeAuth::ApplicationController
-  include EdgeAuth::Concerns::Users
+  include EdgeAuth::Concerns::UsersController
   include RecaptchaHelper
 end

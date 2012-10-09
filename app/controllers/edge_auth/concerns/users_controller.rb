@@ -1,6 +1,6 @@
 module EdgeAuth
   module Concerns
-    module Users
+    module UsersController
       extend ActiveSupport::Concern
 
       included do

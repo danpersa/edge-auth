@@ -1,3 +1,3 @@
 class SessionsController < EdgeAuth::ApplicationController
-  include EdgeAuth::Concerns::Sessions
+  include EdgeAuth::Concerns::SessionsController
 end

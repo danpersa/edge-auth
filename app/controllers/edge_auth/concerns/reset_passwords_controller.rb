@@ -1,6 +1,6 @@
 module EdgeAuth
   module Concerns
-    module ResetPasswords
+    module ResetPasswordsController
       extend ActiveSupport::Concern
      
       included do
