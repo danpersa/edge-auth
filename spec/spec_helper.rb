@@ -36,4 +36,24 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+
+  def test_activate_user(user)
+    if !user.activated?
+      user.activate!
+    end
+  end
+
+  def test_sign_in(user)
+    test_activate_user(user)
+    controller.sign_in(user)
+  end
+  
+  def test_web_sign_in(user)
+    test_activate_user(user)
+    visit signin_path
+    fill_in "Email",    :with => user.email
+    fill_in "Password", :with => user.password
+    click_button "Sign in"
+    return user
+  end
 end

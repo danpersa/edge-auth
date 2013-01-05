@@ -32,7 +32,7 @@ module EdgeAuth
     before_create :make_activation_code
 
     state_machine do
-    state :pending
+      state :pending
       state :active
       state :blocked # the user in this state can't sign in
 
@@ -77,7 +77,11 @@ module EdgeAuth
       self.password_reset_code = generate_token
       self.reset_password_mail_sent_at = Time.now.utc
       self.save!(validate: false)
+    end
 
+    def reset_password_with_email
+      reset_password
+      UserMailer.reset_password(self).deliver
     end
 
     def self.find_by_password_reset_code password_reset_code

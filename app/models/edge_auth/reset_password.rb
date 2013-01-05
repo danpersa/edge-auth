@@ -1,4 +1,4 @@
-#require 'email_format_validator'
+require 'email_format_validator'
 
 module EdgeAuth
   class ResetPassword
@@ -19,7 +19,7 @@ module EdgeAuth
 
     def email_must_belong_to_an_user
       errors.add(:email, "cannot be found in the database") if
-        (not self.email.blank?) and EdgeAuth::User.find_by_email(self.email) == nil
+        (not self.email.blank?) and User.find_by_email(self.email) == nil
     end
 
     def persisted?

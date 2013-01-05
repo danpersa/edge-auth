@@ -1,0 +1,6 @@
+<%= simple_form_for(@user, :builder => SupersizeFormBuilder) do |f| %>
+  <%= render :partial => "layouts/flash", :locals => {:flash => flash} %>
+  <%= f.input :email, :placeholder => "example@domain.com" %>
+  <hr />
+  <%= f.submit "Update Account", :class => 'nice large radius blue button' %>
+<% end %>

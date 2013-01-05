@@ -65,7 +65,7 @@ module EdgeAuth
     end
     
     def redirect_to_root_path_with_notice(notice)
-      redirect_to root_path, :notice => notice
+      redirect_to main_app.root_path, :notice => notice
     end
     
     def store_current_page
@@ -79,7 +79,7 @@ module EdgeAuth
   private
 
     def user_from_remember_token
-      EdgeAuth::User.authenticate_with_salt(*remember_token)
+      User.authenticate_with_salt(*remember_token)
     end
 
     def remember_token

@@ -10,6 +10,8 @@ gem 'simple_form'
 gem 'edge-state-machine'
 gem 'omniauth-twitter'
 gem 'edge-captcha'
+gem 'edge-layouts', git: 'https://github.com/danpersa/edge-layouts.git'
+                    #path: '/home/dix/prog/rails/edge-layouts'
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
