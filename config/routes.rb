@@ -1,12 +1,12 @@
 EdgeAuth::Engine.routes.draw do
 
-  match '/signup',                      :to => 'users#new'
-  match '/activate',                    :to => 'users#activate'
-  match '/signin',                      :to => 'sessions#new'
-  match '/signout',                     :to => 'sessions#destroy'
+  get '/signup',                      to: 'users#new'
+  get '/activate',                    to: 'users#activate'
+  get '/signin',                      to: 'sessions#new'
+  get '/signout',                     to: 'sessions#destroy'
 
-  match '/reset-password-mail-sent',    :to => 'pages#reset_password_mail_sent',
-                                        :as => 'reset_password_mail_sent'
+  get '/reset-password-mail-sent',    to: 'pages#reset_password_mail_sent',
+                                      as: 'reset_password_mail_sent'
 
   resources :sessions, :only => [:new, :create, :destroy]
 

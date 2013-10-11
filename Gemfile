@@ -5,12 +5,12 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'mongoid'
+gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'simple_form'
 gem 'edge-state-machine'
 gem 'omniauth-twitter'
-gem 'edge-captcha'
-gem 'edge-layouts', git: 'https://github.com/danpersa/edge-layouts.git'
+gem 'edge-captcha', git: 'https://github.com/danpersa/edge-captcha.git', branch: "rails4"
+gem 'edge-layouts', git: 'https://github.com/danpersa/edge-layouts.git', branch: "rails4"
                     #path: '/home/dix/prog/rails/edge-layouts'
 
 
@@ -22,17 +22,16 @@ gem 'edge-layouts', git: 'https://github.com/danpersa/edge-layouts.git'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+
 
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork', '~> 0.9.2'
   gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
   gem 'launchy'
   gem 'watchr'
